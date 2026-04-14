@@ -11,13 +11,16 @@ except Exception as e:
 
 print('socket creato')
 
-while KeyboardInterrupt:
+while True:
     try:
-        client.connect((HOST,PORT))
-        break
-    except Exception as e:
-        print("connessione fallita: ", e)
-        print("ritento la connessione.. Ctrl + C per terminare")
+        try:
+            client.connect((HOST,PORT))
+            break
+        except Exception as e:
+            print("connessione fallita: ", e)
+            print("ritento la connessione.. Ctrl + C per terminare")
+    except KeyboardInterrupt:
+        exit(1)
         
 
 print('connessione effettuata')
